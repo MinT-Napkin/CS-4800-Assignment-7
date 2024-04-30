@@ -14,6 +14,11 @@ public class CharacterPropertiesFactory {
         }
     }
 
+    public HashMap<String, CharacterProperties> getCharacterMap()
+    {
+        return characterMap;
+    }
+
     public void printCharacterPropertiesMapSize()
     {
         int size = characterMap.size();

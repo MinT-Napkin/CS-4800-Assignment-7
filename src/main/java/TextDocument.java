@@ -51,6 +51,11 @@ public class TextDocument {
         characterPropertiesFactory.printCharacterPropertiesMapSize();
     }
 
+    public List<Character> getCharacters()
+    {
+        return characters;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

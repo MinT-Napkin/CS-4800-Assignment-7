@@ -10,12 +10,6 @@ public class ConcreteCharacterProperties implements CharacterProperties {
         this.size = size;
     }
 
-
-    @Override
-    public String getType() {
-        return "Character";
-    }
-
     public String getFont() {
         return font;
     }
