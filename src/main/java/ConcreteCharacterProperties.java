@@ -1,12 +1,19 @@
-public class ConcreteCharacterProperties {
-    private final String font;
-    private final String color;
-    private final int size;
+public class ConcreteCharacterProperties implements CharacterProperties {
+
+    private String font;
+    private String color;
+    private int size;
 
     public ConcreteCharacterProperties(String font, String color, int size) {
         this.font = font;
         this.color = color;
         this.size = size;
+    }
+
+
+    @Override
+    public String getType() {
+        return "Character";
     }
 
     public String getFont() {

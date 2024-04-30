@@ -2,13 +2,19 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Document class representing a document containing characters with shared properties
 public class TextDocument {
-    private final List<Character> characters = new ArrayList<>();
+    private final List<Character> characters;
+    private CharacterPropertiesFactory characterPropertiesFactory;
+
+    public TextDocument()
+    {
+        characters = new ArrayList<>();
+        characterPropertiesFactory = new CharacterPropertiesFactory();
+    }
 
     public void addCharacter(char value, String font, String color, int size) {
-        ConcreteCharacterProperties properties = CharacterPropertiesFactory.getCharacterProperties(font, color, size);
-        characters.add(new Character(value, properties));
+        CharacterProperties character = characterPropertiesFactory.getCharacterProperties(font, color, size);
+        characters.add(new Character(value, character));
     }
 
     public void saveToFile(String filename) {
@@ -27,16 +33,22 @@ public class TextDocument {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 4) {
-                    char value = parts[0].charAt(0);
+                    String value = parts[0];
                     String font = parts[1];
                     String color = parts[2];
                     int size = Integer.parseInt(parts[3]);
-                    addCharacter(value, font, color, size);
+
+                    CharacterProperties charProp = characterPropertiesFactory.getCharacterProperties(font, color, size);
+                    characters.add(new Character(value.charAt(0), charProp));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void printFactorySize() {
+        characterPropertiesFactory.printCharacterPropertiesMapSize();
     }
 
     @Override

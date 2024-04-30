@@ -1,14 +1,26 @@
 import java.util.HashMap;
-import java.util.Map;
 
-class CharacterPropertiesFactory {
-    private static final Map<String, ConcreteCharacterProperties> flyweights = new HashMap<>();
+public class CharacterPropertiesFactory {
+    private HashMap<String, CharacterProperties> characterMap = new HashMap<>();
 
-    public static ConcreteCharacterProperties getCharacterProperties(String font, String color, int size) {
-        String key = font + color + size;
-        if (!flyweights.containsKey(key)) {
-            flyweights.put(key, new ConcreteCharacterProperties(font, color, size));
+    public CharacterProperties getCharacterProperties(String font, String color, int size) {
+        String key = getKey(font, color, size);
+        if (characterMap.containsKey(key)) {
+            return characterMap.get(key);
+        } else {
+            CharacterProperties character = new ConcreteCharacterProperties(font, color, size);
+            characterMap.put(key, character);
+            return character;
         }
-        return flyweights.get(key);
+    }
+
+    public void printCharacterPropertiesMapSize()
+    {
+        int size = characterMap.size();
+        System.out.println(size);
+    }
+
+    private String getKey(String font, String color, int size) {
+        return font + "_" + color + "_" + size;
     }
 }
