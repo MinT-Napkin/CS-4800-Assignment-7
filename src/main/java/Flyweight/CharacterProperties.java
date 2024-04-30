@@ -1,3 +1,5 @@
+package Flyweight;
+
 public interface CharacterProperties {
     String getFont();
     String getColor();

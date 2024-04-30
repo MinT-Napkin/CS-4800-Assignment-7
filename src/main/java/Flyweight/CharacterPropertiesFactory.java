@@ -1,3 +1,5 @@
+package Flyweight;
+
 import java.util.HashMap;
 
 public class CharacterPropertiesFactory {

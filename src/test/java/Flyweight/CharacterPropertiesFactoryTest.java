@@ -1,3 +1,7 @@
+package Flyweight;
+
+import Flyweight.CharacterProperties;
+import Flyweight.CharacterPropertiesFactory;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

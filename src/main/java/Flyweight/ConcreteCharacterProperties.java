@@ -1,3 +1,5 @@
+package Flyweight;
+
 public class ConcreteCharacterProperties implements CharacterProperties {
 
     private String font;
